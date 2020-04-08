@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/', 'ProductController@index')->name('product.index');
+
+Route::get('/add-to-cart/{id}', 'ProductController@addToCart')->name('product.addcart');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+

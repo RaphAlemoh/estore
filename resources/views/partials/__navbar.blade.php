@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-expand-lg  sticky-top shadow-sm mb-3 navbar-custom">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="/">Estore</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -8,14 +8,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                      </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">Services</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">Link</a>
                       </li>
                       
                       {{-- <li class="nav-item dropdown">
@@ -30,7 +27,7 @@
             <li class="dropdown">
             <a class="nav-link" href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Categories<b class="caret"></b>
             </a>
-                <ul class = "dropdown-menu">
+            <ul class = "dropdown-menu">
            <li><a href="category.html">Apparel &amp; Accessories</a></li>
             <li><a href="category.html">Baby Products</a></li>
             <li><a href="category.html">Beauty &amp; Health</a></li>
@@ -56,16 +53,15 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item">
+                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-shopping-cart" >4</span></a></li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                    <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                        <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-shopping-cart" >4</span></a></li>
-                        <li class="nav-item"><a href="account.html" class="nav-link"><span class="fa fa-user"></span></a></li>
+                    </li>
                     @else
                     <li class="nav-item"><a href="#" class="nav-link">
                         <span class="fa fa-user fa-lg"></span></a>
