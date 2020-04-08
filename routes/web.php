@@ -22,6 +22,10 @@ Route::get('/add-to-cart/{id}', 'ProductController@addToCart')->name('product.ad
 
 Route::get('/shopping-cart', 'ProductController@getCart')->name('products.shoppingCart');
 
+Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
+Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
+
+
 
 
 Auth::routes();

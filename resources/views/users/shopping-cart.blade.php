@@ -36,9 +36,9 @@
 <hr>
 <div class="row">
 <div class="col-9">
-        <button class="btn btn-success btn-xs">
+<a href="{{ route('checkout') }}" type="button" class="btn btn-success btn-xs">
                 Checkout
-         </button>
+        </a>
 </div>
 </div>
 @else
