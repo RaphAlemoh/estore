@@ -53,7 +53,11 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-shopping-cart" >4</span></a></li>
+                <li class="nav-item"><a href="{{ route('products.shoppingCart')}}" class="nav-link">
+                            <span class="fa fa-shopping-cart fa-lg">
+                            <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>    
+                            </span></a>
+                    </li>
                     @if (Route::has('register'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -72,7 +76,9 @@
                     </li>
     
                     <li class="nav-item"><a href="#" class="nav-link">
-                            <span class="fa fa-shopping-cart fa-lg">1</span></a>
+                            <span class="fa fa-shopping-cart fa-lg">
+                            <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>    
+                            </span></a>
                     </li>
     
                         <li class="nav-item dropdown">

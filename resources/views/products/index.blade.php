@@ -41,7 +41,7 @@
             </div>
             <div class="add-to-cart clearfix">
                     <div class="pull-left mt-1" style="font-weight:bold; font-size:16px;">${{ $product->price }}</div>
-                    <a href="#" class="btn btn-success pull-right" data-toggle="tooltip" data-placement="top" title="Add to cart" role="button">Add to Cart</a>
+            <a href="{{ route('product.addcart', ['id' => $product->id]) }}" class="btn btn-success pull-right" data-toggle="tooltip" data-placement="top" title="Add to cart" role="button">Add to Cart</a>
             </div>
         </div>
         </div>

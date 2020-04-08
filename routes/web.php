@@ -16,9 +16,13 @@
 // });
 
 
-Route::get('/', 'ProductController@index')->name('product.index');
+Route::get('/', 'ProductController@index')->name('products.index');
 
 Route::get('/add-to-cart/{id}', 'ProductController@addToCart')->name('product.addcart');
+
+Route::get('/shopping-cart', 'ProductController@getCart')->name('products.shoppingCart');
+
+
 
 Auth::routes();
 

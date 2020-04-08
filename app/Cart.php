@@ -14,7 +14,7 @@ class Cart
         if($oldCart){
             $this->items = $oldCart->items;
             $this->totalQty = $oldCart->totalQty;
-            $this->totalPrice = $oldCart->totalPrice;
+            $this->totalPrice = $oldCart->totalPrice; 
         }
     }
 
@@ -26,8 +26,12 @@ class Cart
                 $storedItem = $this->items[$id];
             }
         }
+        $storedItem['qty']++;
+        $storedItem['price'] = $item->price * $storedItem['qty'];
         $this->items[$id] = $storedItem;
+        $this->totalQty++;
+        $this->totalPrice += $item->price;
     }
 
-    
+
 }
