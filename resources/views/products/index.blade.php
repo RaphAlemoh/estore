@@ -20,6 +20,15 @@
     </div>
 
     <div class="col-lg-9">
+        @if(Session::has('success'))
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-md-6 col-md-offset-4 col-sm-offset-3">
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            </div>
+        </div>
+    @endif
     @foreach ($products->chunk(3) as $chunkedProduct)
     <div class="row">
         @foreach ($chunkedProduct as $product)

@@ -20,10 +20,18 @@ Route::get('/', 'ProductController@index')->name('products.index');
 
 Route::get('/add-to-cart/{id}', 'ProductController@addToCart')->name('product.addcart');
 
+Route::get('/reduce-one/{id}', 'ProductController@getReduceByOne')->name('users.reduceByOne');
+
+Route::get('/reduce-item/{id}', 'ProductController@getRemoveItem')->name('users.removeItem');
+
 Route::get('/shopping-cart', 'ProductController@getCart')->name('products.shoppingCart');
 
 Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
+
 Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
+
+Route::get('/user-profile', 'ProductController@getProfile')->name('users.profile');
+
 
 
 

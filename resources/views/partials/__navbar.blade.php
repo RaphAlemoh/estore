@@ -15,7 +15,7 @@
                         <a class="nav-link" href="#">Link</a>
                       </li>
                       
-                      {{-- <li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                Categories <span class="caret"></span>
                             </a>
@@ -23,7 +23,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a href="category.html">Apparel &amp; Accessories</a>
                             </div>
-                        </li> --}}
+                        </li>
             <li class="dropdown">
             <a class="nav-link" href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Categories<b class="caret"></b>
             </a>
@@ -67,15 +67,15 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @else
-                    <li class="nav-item"><a href="#" class="nav-link">
+                    {{-- <li class="nav-item"><a href="#" class="nav-link">
                         <span class="fa fa-user fa-lg"></span></a>
-                    </li>
+                    </li> --}}
     
                     <li class="nav-item"><a href="#" class="nav-link">
                             <span class="fa fa-bell fa-lg"></span></a>
                     </li>
-    
-                    <li class="nav-item"><a href="#" class="nav-link">
+
+                    <li class="nav-item"><a href="{{ route('products.shoppingCart')}}" class="nav-link">
                             <span class="fa fa-shopping-cart fa-lg">
                             <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>    
                             </span></a>
@@ -96,6 +96,8 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
+
+                            <a class="dropdown-item" href="{{ route('users.profile') }}"> {{ __('Profile/Orders') }}</a>
                             </div>
                         </li>
                     @endguest

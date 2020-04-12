@@ -16,8 +16,8 @@
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="">Reduce by 1</a></li>
-                            <li class="dropdown-item"><a href="">Reduce by all</a></li>
+                        <li class="dropdown-item"><a href=" {{ route('users.reduceByOne', ['id' => $product['item']['id']]) }} ">Reduce by 1</a></li>
+                            <li class="dropdown-item"><a href=" {{ route('users.removeItem', ['id' => $product['item']['id']]) }} ">Reduce Item </a></li>
                         </ul>
                     </div>
                     <span class="badge badge-primary">{{ $product['qty'] }}</span>
