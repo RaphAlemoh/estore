@@ -59,7 +59,7 @@ class PaymentController extends Controller
     public function handleGatewayCallback(Request $request)
     {
         $paymentDetails = Paystack::getPaymentData();
-        return redirect('products.index')->with('success', 'Your order payment was successfull');
+        return redirect()->route('products.index')->with('success', 'Your order payment was successfull');
     }
 
 
