@@ -1,0 +1,131 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,500,700);
+
+html, body{
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(241, 236, 236);
+    scroll-behavior: smooth;
+    color: rgb(46, 43, 43);
+}
+
+:root {
+    --jumbotron-padding-y: 4rem;
+  } 
+
+   .jumbotron {
+    padding-top: var(--jumbotron-padding-y);
+    padding-bottom: var(--jumbotron-padding-y);
+    margin-bottom: 0px;
+    border-radius: 0;
+    background-image: url('../jumbroton.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    color: rgb(85, 190, 73);
+  }
+  
+  @media (min-width: 768px) {
+    .jumbotron {
+      padding-top: calc(var(--jumbotron-padding-y) * 2);
+      padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+    }
+  }
+  
+  .jumbotron p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .jumbotron-heading {
+    font-weight: 300;
+  }
+  
+  .jumbotron .container {
+    max-width: 40rem;
+  } 
+  
+  footer {
+    margin-top: .3rem;
+    margin-bottom: .5rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+  }
+  
+  .navbar{
+    background-color: #FAFAFA;
+  }
+  
+  
+  .nav-link, .navbar-brand{
+    color: rgb(50, 177, 11);
+  }
+
+  .nav-link:hover, .navbar-brand:hover{
+    color: rgba(56, 107, 36, 0.63);
+  }
+    
+  .farm-bg{
+    background-image: url('../farm-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+  }
+  
+  
+  .farm-style{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    opacity: 5;
+  }
+  
+  .footer-style{
+    background-color: #FAFAFA;
+    color: rgb(50, 177, 11);
+    /* color: rgb(46, 43, 43); */
+  }
+  
+
+.connect .fa{
+    font-size: 2em;
+    margin: .5rem;
+}
+
+.fa-twitter-square{
+    color: skyblue;
+}
+
+.fa-facebook-official{
+    color: #3b5998;
+}
+
+.fa-youtube{
+    color: rgb(202, 58, 87);
+}
+
+.fa-instagram{
+    color: #517fa4;
+}
+
+
+.footer-copy{
+    font-size: 1.0rem;
+}
+
+
+@media (min-width: 640px) {
+
+
+}
+
+
+@media (max-width: 640px) and (max-width: 320px) {
+    .farm-bg{
+        display: none;
+    }
+
+    .footer-row {
+      text-align: center;
+    }
+  
+}

@@ -22,6 +22,9 @@ class CreateOrdersTable extends Migration
             $table->text('city')->nullable();
             $table->text('payment_id')->nullable();
             $table->text('order_id')->nullable();
+            $table->text('reference')->nullable();
+            $table->text('payment_status')->nullable();
+            $table->text('amount')->nullable();
             $table->timestamps();
         });
     }

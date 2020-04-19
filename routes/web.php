@@ -32,12 +32,36 @@ Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
 
 Route::get('/user-profile', 'ProductController@getProfile')->name('users.profile');
 
+Route::match(['get', 'post'], '/admin', 'AdminController@login')->name('admin.login');
 
-
+Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
+    Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+});
+
+
+Route::group(['middleware' => ['auth', 'checkRole:staff,admin']], function () {
+    Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+
+});
+
+
+Route::group(['middleware' => ['auth', 'checkRole:staff,admin,customer']], function () {
+
+
+});
+
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+
+Route::post('/payment/webhook', 'PaymentController@handleWebHook');
+
 
 
