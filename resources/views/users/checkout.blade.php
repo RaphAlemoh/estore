@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label>
-                <input class="form-control py-4" id="inputEmailAddress" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
+                <input class="form-control py-4" id="inputEmailAddress" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" required/>
             </div>
         @else
         <div class="form-row">
@@ -38,6 +38,7 @@
         </div>
         <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label>
             <input class="form-control py-4" id="inputEmailAddress" name="email" type="email" aria-describedby="emailHelp"  disabled value="{{ Auth::user()->email }}" />
+            <input name="email" type="hidden" value="{{ Auth::user()->email }}" />
         </div>
         @endguest
         {{-- <input type="hidden" name="orderID" value="{{ $item->id }}"> --}}

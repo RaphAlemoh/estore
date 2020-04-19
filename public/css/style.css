@@ -9,7 +9,7 @@ html, body{
     color: rgb(46, 43, 43);
 }
 
-:root {
+/* :root {
     --jumbotron-padding-y: 4rem;
   } 
 
@@ -42,13 +42,13 @@ html, body{
   .jumbotron .container {
     max-width: 40rem;
   } 
-  
-  footer {
+   */
+  /* footer {
     margin-top: .3rem;
     margin-bottom: .5rem;
     padding-top: .2rem;
     padding-bottom: .2rem;
-  }
+  } */
   
   .navbar{
     background-color: #FAFAFA;
@@ -62,27 +62,15 @@ html, body{
   .nav-link:hover, .navbar-brand:hover{
     color: rgba(56, 107, 36, 0.63);
   }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(56, 107, 36, 0.63)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
     
-  .farm-bg{
-    background-image: url('../farm-bg.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.5;
-  }
-  
-  
-  .farm-style{
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    opacity: 5;
-  }
-  
+
   .footer-style{
     background-color: #FAFAFA;
     color: rgb(50, 177, 11);
-    /* color: rgb(46, 43, 43); */
   }
   
 
@@ -120,9 +108,6 @@ html, body{
 
 
 @media (max-width: 640px) and (max-width: 320px) {
-    .farm-bg{
-        display: none;
-    }
 
     .footer-row {
       text-align: center;
