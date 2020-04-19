@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Paystack;
 use Auth;
 use App\User;
-use App\Session;
 use App\Order;
 use App\Cart;
 
@@ -38,7 +38,9 @@ class PaymentController extends Controller
         $order->state = $request->state;
         $order->city = $request->city;
         $order->payment_id = '3f7g8h7h3ee';
-        $order->relish_id =  $request->orderID;
+        
+        // $order->relish_id =  $request->orderID;
+        
         $order->reference =  $request->reference;
         if(Auth::user() != NULL){
             Auth::user()->orders()->save($order);
@@ -66,13 +68,14 @@ class PaymentController extends Controller
         $event = json_decode($data, true);
        if($event['event'] === "charge.success"){
            $reference  = $event['data']['reference'];
-        //    $relishId = $event['data']['metadata']['orderId'];
        $updateOrder =  Order::where(['reference' => $reference])->update([
             'createdAt' => date("Y-m-d H:i:s",strtotime($event['data']['created_at'])),
             'paidAt' => date("Y-m-d H:i:s",strtotime($event['data']['paidAt'])),
-            'payment_status' => 'PAID'
+            'payment_status' => 'PAID',
+            'payment_id' => $event['data']['id']
         ]);
-    $request->session()->forget('cart');
+        Log::info($event);
+        $request->session()->forget('cart');
        if($updateOrder){
         return response()->json(200);
         }

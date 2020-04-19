@@ -40,7 +40,7 @@
             <input class="form-control py-4" id="inputEmailAddress" name="email" type="email" aria-describedby="emailHelp"  disabled value="{{ Auth::user()->email }}" />
         </div>
         @endguest
-        <input type="hidden" name="orderID" value="{{ $item->id }}">
+        {{-- <input type="hidden" name="orderID" value="{{ $item->id }}"> --}}
         <input type="hidden" name="amount" value="{{ $total * 100 }}"> {{-- required in kobo --}}
         <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
         <div class="form-group"><label class="small mb-1" for="Address">Address</label>
