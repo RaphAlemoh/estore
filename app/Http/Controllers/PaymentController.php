@@ -85,4 +85,19 @@ class PaymentController extends Controller
        
     }
 
+
+    // $user = User::find($confirm_order->user_id);
+    // $data['user'] = $user;
+    // // return dd($data);
+    // $pdf = PDF::loadView('customers.receiptpdf', $data);
+    // $path = public_path('invoice/').$user->id.'-'.time().'.pdf';
+    // $pdf->save($path);
+
+    // $details = [
+    //     'greeting' => 'Hello, '. $user->name. '',
+    //     'body' => 'Your order payment was successful',
+    //     'order_code' => 'Your order code is: '. $confirm_order->order_code,
+    //     'order_details' =>  unserialize($confirm_order->cart),
+    //     // 'pdf' => base64_encode($pdf->output())
+    //     'pdf' => $path
 }

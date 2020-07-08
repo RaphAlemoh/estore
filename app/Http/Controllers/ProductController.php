@@ -6,17 +6,118 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Cart;
 use App\Product;
+use App\Category;
 use App\Order;
 use Auth;
 
 class ProductController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(){
-
         $products = Product::all();
         return view('products.index', ['products' =>  $products]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $categories = Category::all();
+        return view('products/create', ['categories' => $categories]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+    $this->validate($request, [
+        'product_url' => 'required',
+        'title' => 'required|string|max:255|unique:products,title',
+        'image' => 'required|image|mimes:jpeg,png,jpg|max:2048|required',
+        'description' => 'required|string|max:255',
+        'price' => 'required|string|max:255',
+        'category_id' => 'required|string|max:255',
+    ]);
+    
+    if ($request->hasFile('image')) {
+
+        $picture = $request->file('image');
+        $pictureName = $request->name .'-'.time().'.'.$picture->getClientOriginalExtension();
+        $picture->move(public_path('images/products'), $pictureName);
+        $data = $request->all();
+        $data['image'] = $pictureName;
+        $data['category_id'] = $request->category_id;
+        $data['title'] = $request->title;
+        $data['price'] = $request->price;
+        $data['description'] = $request->description;
+        $data['product_url'] = $request->category_url;
+        $product = Product::create($data);
+        if($product){
+            Session::flash('notice','Product was successfully created');
+            return redirect('products.index');
+        }
+        Session::flash('alert','Product was not successfully created');
+    }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $product = Product::find($id);
+        return view('products/show')->with(compact('category'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    
     public function addToCart(Request $request, $id){
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
@@ -95,6 +196,7 @@ class ProductController extends Controller
         });
         return view('users.profile', ['orders' => $orders]);
     }
+
 
 }
  

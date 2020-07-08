@@ -3,6 +3,16 @@
 @section('content')   
 <div class="container">
     <div class="row justify-content-center">
+    <div class="col-6">
+    <h3>Shipping Details</h3>
+    </div>
+
+    <div class="col-6">
+    <h3>Your Order</h3>
+    <hr/>
+    </div>
+
+    <div class="row justify-content-center">
     <div class="col-sm-6 col-md-6 col-md-offset-4 col-sm-offset-3">
         <h3 class="text-center">Checkout</h3>
         <hr>
@@ -62,6 +72,7 @@
         </button>
     </div>
     </form>
+    
     </div>
 </div>
 </div>

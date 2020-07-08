@@ -15,19 +15,17 @@
                         <a class="nav-link" href="#">Link</a>
                       </li>
                       
-                      <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                               Categories <span class="caret"></span>
-                            </a>
-    
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="category.html">Apparel &amp; Accessories</a>
-                            </div>
+                      <li class="nav-item">
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('store.index') }}">
+                                        Store 
+                                    </a>
+                                </li>
                         </li>
             <li class="dropdown">
-            <a class="nav-link" href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Categories<b class="caret"></b>
+            <a class="nav-link" href = "#" class = "dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Categories<span class="caret"></span>
             </a>
-            <ul class = "dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
            <li><a href="category.html">Apparel &amp; Accessories</a></li>
             <li><a href="category.html">Baby Products</a></li>
             <li><a href="category.html">Beauty &amp; Health</a></li>
@@ -41,10 +39,7 @@
             <li class="divider"></li>
             <li><a href="ecommerce.html">All Categories</a></li>
             <li class = "divider"></li>
-            <li><a href = "#">Separated link</a></li>
-    
-            <li class = "divider"></li>
-            <li><a href = "#">One more separated link</a></li>       
+            <li><a href = "#">Separated link</a></li>   
                 </ul>
             </li>     
                 </ul>
@@ -75,7 +70,8 @@
                             <span class="fa fa-bell fa-lg"></span></a>
                     </li>
 
-                    <li class="nav-item"><a href="{{ route('products.shoppingCart')}}" class="nav-link">
+                    <li class="nav-item">
+                        <a href="{{ route('products.shoppingCart')}}" class="nav-link">
                             <span class="fa fa-shopping-cart fa-lg">
                             <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>    
                             </span></a>
@@ -96,8 +92,11 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-
-                            <a class="dropdown-item" href="{{ route('users.profile') }}"> {{ __('Profile/Orders') }}</a>
+                                <a class="dropdown-item" href="{{ route('users.profile') }}"> {{ __('Profile') }}</a>
+                                <a class="dropdown-item" href="{{ route('users.profile') }}"> {{ __('Orders') }}</a>
+                            @if (Auth::user()->hasRole('admin'))
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}"> {{ __('Admin Dashboard') }}</a>
+                            @endif
                             </div>
                         </li>
                     @endguest
