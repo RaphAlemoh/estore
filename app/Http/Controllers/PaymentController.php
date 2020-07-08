@@ -85,7 +85,16 @@ class PaymentController extends Controller
        
     }
 
+//     $pdf = PDF::loadView('customers.receiptpdf', $data);
+// $path = public_path('invoice/').$user->id.'-'.time().'.pdf';
+// $pdf->save($path);
+//     'pdf' => base64_encode($pdf->output())
+//     'pdf' => $path
+// $delay_time = Carbon::now()->addSeconds(5);
+// $notify = Notification::send($user, (new OrderInvoice($details))->onQueue('email')->delay($delay_time));
 
+//     ->attach($this->details['pdf']);
+//     ->attachData(base64_decode($this->details['pdf']), ['mime' => 'application/pdf']);
     // $user = User::find($confirm_order->user_id);
     // $data['user'] = $user;
     // // return dd($data);
@@ -100,4 +109,12 @@ class PaymentController extends Controller
     //     'order_details' =>  unserialize($confirm_order->cart),
     //     // 'pdf' => base64_encode($pdf->output())
     //     'pdf' => $path
+
+    // // protected function invoicePDF(){
+    // $pdf = PDF::loadView('customers.receiptpdf', $data);
+    // $path = storage_path('app/public/pdf/')."example.pdf";
+    // $pdf->save($path);
+    //     $pdf->download('invoice.pdf');
+    // //     $pdf = PDF::loadView('mails.mail', $data);
+    // // }
 }
